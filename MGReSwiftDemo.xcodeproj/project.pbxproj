@@ -8,20 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		BC2A70A51E5ACCE50038B3F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2A70A41E5ACCE50038B3F9 /* AppDelegate.swift */; };
-		BC2A70A71E5ACCE50038B3F9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2A70A61E5ACCE50038B3F9 /* ViewController.swift */; };
 		BC2A70AA1E5ACCE50038B3F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC2A70A81E5ACCE50038B3F9 /* Main.storyboard */; };
 		BC2A70AC1E5ACCE50038B3F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC2A70AB1E5ACCE50038B3F9 /* Assets.xcassets */; };
 		BC2A70AF1E5ACCE50038B3F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC2A70AD1E5ACCE50038B3F9 /* LaunchScreen.storyboard */; };
+		BC2A70BA1E5AD6B10038B3F9 /* ProductListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2A70B91E5AD6B10038B3F9 /* ProductListViewController.swift */; };
+		BC2A70BE1E5AD6D50038B3F9 /* ProductDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2A70BD1E5AD6D50038B3F9 /* ProductDataStore.swift */; };
+		BC2A70C01E5AD6DC0038B3F9 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2A70BF1E5AD6DC0038B3F9 /* Product.swift */; };
+		BC2A70C21E5AD9950038B3F9 /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2A70C11E5AD9950038B3F9 /* ProductDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BC2A70A11E5ACCE50038B3F9 /* MGReSwiftDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MGReSwiftDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC2A70A41E5ACCE50038B3F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BC2A70A61E5ACCE50038B3F9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BC2A70A91E5ACCE50038B3F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BC2A70AB1E5ACCE50038B3F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC2A70AE1E5ACCE50038B3F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BC2A70B01E5ACCE50038B3F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC2A70B91E5AD6B10038B3F9 /* ProductListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductListViewController.swift; sourceTree = "<group>"; };
+		BC2A70BD1E5AD6D50038B3F9 /* ProductDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDataStore.swift; sourceTree = "<group>"; };
+		BC2A70BF1E5AD6DC0038B3F9 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		BC2A70C11E5AD9950038B3F9 /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +60,41 @@
 		BC2A70A31E5ACCE50038B3F9 /* MGReSwiftDemo */ = {
 			isa = PBXGroup;
 			children = (
+				BC2A70B81E5AD6960038B3F9 /* Services */,
+				BC2A70B71E5AD68F0038B3F9 /* Models */,
+				BC2A70B61E5AD68A0038B3F9 /* UI */,
 				BC2A70A41E5ACCE50038B3F9 /* AppDelegate.swift */,
-				BC2A70A61E5ACCE50038B3F9 /* ViewController.swift */,
 				BC2A70A81E5ACCE50038B3F9 /* Main.storyboard */,
 				BC2A70AB1E5ACCE50038B3F9 /* Assets.xcassets */,
 				BC2A70AD1E5ACCE50038B3F9 /* LaunchScreen.storyboard */,
 				BC2A70B01E5ACCE50038B3F9 /* Info.plist */,
 			);
 			path = MGReSwiftDemo;
+			sourceTree = "<group>";
+		};
+		BC2A70B61E5AD68A0038B3F9 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				BC2A70B91E5AD6B10038B3F9 /* ProductListViewController.swift */,
+				BC2A70C11E5AD9950038B3F9 /* ProductDetailsViewController.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		BC2A70B71E5AD68F0038B3F9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BC2A70BF1E5AD6DC0038B3F9 /* Product.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		BC2A70B81E5AD6960038B3F9 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				BC2A70BD1E5AD6D50038B3F9 /* ProductDataStore.swift */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +170,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC2A70A71E5ACCE50038B3F9 /* ViewController.swift in Sources */,
+				BC2A70BA1E5AD6B10038B3F9 /* ProductListViewController.swift in Sources */,
+				BC2A70BE1E5AD6D50038B3F9 /* ProductDataStore.swift in Sources */,
 				BC2A70A51E5ACCE50038B3F9 /* AppDelegate.swift in Sources */,
+				BC2A70C21E5AD9950038B3F9 /* ProductDetailsViewController.swift in Sources */,
+				BC2A70C01E5AD6DC0038B3F9 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +338,7 @@
 				BC2A70B51E5ACCE50038B3F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
