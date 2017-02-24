@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReSwift
 
 class ProductListViewController: UIViewController {
 
@@ -15,13 +16,31 @@ class ProductListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
+        
         reloadData()
     }
     
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        self.tableView.setEditing(editing, animated: animated)
+    }
+    
     fileprivate func reloadData() {
-        products = ProductDataStore.sharedInstance.getProductList()
-        tableView.reloadData()
+        mainStore.dispatch(
+            ProductActionSetList(products: ProductDataStore.sharedInstance.getProductList())
+        )
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        mainStore.subscribe(self)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        mainStore.unsubscribe(self)
     }
     
     @IBAction func addProduct(_ sender: Any) {
@@ -39,7 +58,14 @@ class ProductListViewController: UIViewController {
             controller.delegate = self
         }
     }
+}
 
+extension ProductListViewController: StoreSubscriber {
+    func newState(state: AppState) {
+        print("New state")
+        products = state.products
+        tableView.reloadData()
+    }
 }
 
 extension ProductListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -64,17 +90,36 @@ extension ProductListViewController: UITableViewDataSource, UITableViewDelegate 
         let product = products[indexPath.row]
         self.performSegue(withIdentifier: "presentProduct", sender: product)
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let product = products[indexPath.row]
+            ProductDataStore.sharedInstance.delete(productID: product.id)
+            mainStore.dispatch(
+                ProductActionDelete(product: product)
+            )
+        }
+    }
 }
 
 extension ProductListViewController: ProductDetailsViewControllerDelegate {
     func productDetailsDidSave(product: Product, isEdited: Bool) {
         if isEdited {
             ProductDataStore.sharedInstance.update(product: product)
+            mainStore.dispatch(
+                ProductActionUpdate(product: product)
+            )
         }
         else {
             ProductDataStore.sharedInstance.add(product: product)
+            mainStore.dispatch(
+                ProductActionAdd(product: product)
+            )
         }
-        reloadData()
     }
 }
 

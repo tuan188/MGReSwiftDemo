@@ -1,0 +1,12 @@
+PODS:
+  - ReSwift (3.0.0)
+
+DEPENDENCIES:
+  - ReSwift (~> 3.0)
+
+SPEC CHECKSUMS:
+  ReSwift: f0255f4b4f2dacd12c5d97d34d13fc5dad6d6371
+
+PODFILE CHECKSUM: 7ac5ede839aec13565e3764ad029ea9a038c1990
+
+COCOAPODS: 1.2.0

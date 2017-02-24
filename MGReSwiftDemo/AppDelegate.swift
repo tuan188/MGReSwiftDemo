@@ -7,6 +7,13 @@
 //
 
 import UIKit
+import ReSwift
+
+// The global application store, which is responsible for managing the appliction state.
+let mainStore = Store<AppState>(
+    reducer: ProductReducer(),
+    state: nil
+)
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
